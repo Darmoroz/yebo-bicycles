@@ -1,0 +1,26 @@
+//colors map
+$colors:(
+	'primary': #848789,
+	'secondary': #353738,
+	'accent': rgba(100, 194, 158, .5),
+	'accentPlus': rgba(100, 194, 158, 1),
+	'third': #4d4959,
+	'bgPrimary': #f7f7f7,
+	'bgDecor': #ebebeb,
+	'bgSlider': #f7f7f7,
+	'bgBtn': #282f35,
+);
+
+@function getColor($key) {
+	@return map-get($colors, $key);
+}
+// breakpoints map
+$breakpoints:(
+	'small': 320px,
+	'medium': 768px,
+	'large': 1024px,
+);
+
+@function getBrPoint($key) {
+	@return map-get($breakpoints, $key);
+}

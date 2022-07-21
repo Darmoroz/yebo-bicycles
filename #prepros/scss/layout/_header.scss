@@ -1,0 +1,158 @@
+body.lock {
+	overflow: hidden;
+}
+
+.page-header {
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+	margin-top: 2rem;
+	
+	// .page-header__row
+	
+	&__row {
+		@include flex();
+		height: 85px;
+	}
+
+	// .page-header__menu
+
+	&__menu {
+	}
+
+	// .page-header__logo
+
+	&__logo {
+		@extend %posAbsCenter;
+	}
+	@media (max-width: getBrPoint('medium')) {
+		margin-top: 1rem;
+	}
+}
+
+.menu {
+
+	// .menu__icon
+	@media (max-width: getBrPoint('medium')) {
+		&__icon {
+			position: absolute;
+			top: 18px;
+			right: 10px;
+			display: block;
+			width: 30px;
+			height: 18px;
+			cursor: pointer;
+			li {
+				@include positionTL(absolute,8px,0);
+				z-index: 1;
+				width: 100%;
+				height: 2px;
+				background-color: getColor('third');
+				&:first-child{
+					top: 0;
+				}
+				&:last-child{
+					top: auto;
+					bottom: 0;
+				}
+			}
+			&.active{
+				li {
+					background-color: #fff;
+					transform: scale(0);
+					&:first-child {
+						transform: rotate(-45deg);
+						top: 8px;
+					}
+					&:last-child {
+						transform: rotate(45deg);
+						bottom: 8px;
+					}
+				}
+			}
+		}
+	}
+	// .menu__body
+
+	&__body {
+	}
+
+	// .menu__list
+
+	&__list {
+		@include flex();
+		li {
+			position: relative;
+			&:not(:last-child) {
+				margin-right: 70px;
+			}
+			&:nth-child(2) {
+				margin-right: 220px;
+			}
+			&:nth-child(2n+1)::after {
+				position: absolute;
+				top: 50%;
+				right: -33px;
+				transform: translateY(-50%);
+				content: '';
+				width: 4px;
+				height: 4px;
+				border-radius: 50%;
+				background-color: getColor('third');
+			}
+			}
+		}
+		
+		// .menu__link
+
+	&__link {
+		display: block;
+		font-size: 0.812em;
+		font-weight: 700;
+		line-height: 5;
+		text-transform: uppercase;
+		color: getColor('third');
+	}
+
+	@media (max-width: getBrPoint('medium')){
+		&__body {
+			@include positionTL(fixed)
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			padding-top: 150px;
+			background-color: getColor('third');
+			transform: translate(0, -100%);
+			transition: transform 350ms linear;
+			&.active {
+				transform: translate(0, 0);
+			}
+		}
+		&__list {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			li:not(:last-child) { 
+				margin-right: 0;
+				margin-bottom: 2rem;
+			}
+			li:not(:last-child)::after {
+				@include positionTL(absolute,62px,50%)
+				display: inline-block;
+				content: '';
+				width: 4px;
+				height: 4px;
+				border-radius: 50%;
+				background-color: #ffffff;
+			}
+		}
+		&__link{
+			font-size: 1.25rem;
+			line-height: 3rem;
+			color: #ffffff;
+		}
+	}
+}
+
+.icon-menu {
+}
